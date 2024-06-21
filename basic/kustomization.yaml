@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # - metallb-config.yaml
+  # - metallb-native.yaml
+  # - namespace.yaml
+  # - deploy.yaml
+  - default-secret.yaml
+  - test-ingress.yaml
+  - test-nginx.yaml
+  # 다른 필요한 리소스들을 여기에 추가합니다.
