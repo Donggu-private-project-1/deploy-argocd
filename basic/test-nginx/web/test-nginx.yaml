@@ -1,0 +1,35 @@
+apiVersion: apps/v1                      # Deployment 리소스의 API 버전
+kind: Deployment                         # 리소스 종류 (Deployment)
+metadata:
+  namespace: donggu-ns                   # Deployment가 속할 네임스페이스
+  name: donggu-nginx                     # Deployment의 이름
+spec:
+  replicas: 1                            # 생성할 파드(Pod)의 수
+  selector:                              # Deployment가 관리할 파드를 선택하는 기준
+    matchLabels:
+      app: donggu-nginx                  # 선택할 파드의 라벨
+  template:                              # 파드의 템플릿 (Deployment가 생성할 파드의 정의)
+    metadata:
+      labels:
+        app: donggu-nginx                # 생성될 파드에 붙일 라벨
+    spec:
+      containers:                        # 파드에 포함될 컨테이너 정의
+      - name: donggu-nginx               # 컨테이너의 이름
+        image: harbor.dorong9.com/test/nginx:latest  # 컨테이너에서 사용할 이미지
+        ports:
+        - containerPort: 80              # 컨테이너가 사용하는 포트
+      imagePullSecrets:                  # 프라이빗 레지스트리에서 이미지를 가져올 때 사용할 시크릿
+      - name: donggu-regcred             # 시크릿의 이름
+---
+apiVersion: v1                           # Service 리소스의 API 버전
+kind: Service                            # 리소스 종류 (Service)
+metadata:
+  namespace: donggu-ns                   # Service가 속할 네임스페이스
+  name: donggu-nginx                     # Service의 이름
+spec:
+  selector:
+    app: donggu-nginx                    # 이 서비스가 트래픽을 라우팅할 파드를 선택하는 라벨
+  ports:
+    - protocol: TCP                      # 서비스에서 사용할 프로토콜
+      port: 80                           # 서비스가 외부에 노출할 포트
+      targetPort: 80                     # 서비스가 트래픽을 전달할 파드의 포트
