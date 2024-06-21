@@ -1,18 +1,19 @@
 kind: Ingress
 metadata:
-  name: test-ingress
+  namespace: donggu-ns
+  name: donggu-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: test.dorong9.com
+    - host: www.dorong9.com
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: test-nginx
+              name: donggu-nginx
               port:
                 number: 80
