@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test-ingress
-  namespace: default
+  namespace: donggu-1
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:

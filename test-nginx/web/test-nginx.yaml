@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-ng
-  namespace: default
+  name: test-nginx
+  namespace: donggu-1
 spec:
   replicas: 3
   selector:
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: test-nginx
-  namespace: default
+  namespace: donggu-1
 spec:
   ports:
     - protocol: TCP
