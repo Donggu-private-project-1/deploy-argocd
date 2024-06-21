@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
       - name: test-nginx
-        image: harbor.dorong9.com/test/nginx:latest
+        image: harbor.dorong9.com/donggu-private-project-1/front-react:1
         ports:
         - containerPort: 80
       imagePullSecrets:
-      - name: default-regcred
+      - name: donggu-1-regcred
 ---
 apiVersion: v1
 kind: Service
