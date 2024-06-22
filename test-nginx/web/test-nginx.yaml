@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: test-nginx
-        image: harbor.dorong9.com/donggu-private-project-1/front-react:42
+        image: harbor.dorong9.com/donggu-private-project-1/front-react:43
         ports:
         - containerPort: 80
       imagePullSecrets:
