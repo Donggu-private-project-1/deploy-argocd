@@ -11,7 +11,7 @@ spec:
     - host: test.dorong9.com
       http:
         paths:
-        - path: /testpage
+        - path: /
           pathType: Prefix
           backend:
             service:
