@@ -5,7 +5,7 @@ metadata:
   namespace: test
 spec:
   replicas: 3
-  revisionHistoryLimit: 3  # 보관할 ReplicaSet의 수를 3로 제한
+  revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
       app: test-nginx
