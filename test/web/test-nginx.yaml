@@ -18,7 +18,7 @@ spec:
       - name: test-nginx
         image: harbor.dorong9.com/donggu-private-project-1/test:63
         ports:
-        - containerPort: 81
+        - containerPort: 80
       imagePullSecrets:
       - name: test-regcred
 ---
@@ -30,7 +30,7 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 81
-      targetPort: 81
+      port: 80
+      targetPort: 80
   selector:
     app: test-nginx

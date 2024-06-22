@@ -15,6 +15,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: donggu-1-nginx
+              name: test-nginx
               port:
-                number: 81
+                number: 80
