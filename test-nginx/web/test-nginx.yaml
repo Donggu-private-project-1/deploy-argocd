@@ -5,6 +5,7 @@ metadata:
   namespace: donggu-1
 spec:
   replicas: 3
+  revisionHistoryLimit: 2  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
       app: test-nginx
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: test-nginx
-        image: harbor.dorong9.com/donggu-private-project-1/front-react:6
+        image: harbor.dorong9.com/donggu-private-project-1/front-react:45
         ports:
         - containerPort: 80
       imagePullSecrets:
