@@ -5,7 +5,7 @@ metadata:
   namespace: donggu-1
 spec:
   replicas: 3
-  revisionHistoryLimit: 2  # 보관할 ReplicaSet의 수를 3로 제한
+  revisionHistoryLimit: 3  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
       app: donggu-nginx
