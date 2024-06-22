@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: donggu-nginx
+  name: donggu-1-nginx
   namespace: donggu-1
 spec:
   replicas: 3
   revisionHistoryLimit: 3  # 보관할 ReplicaSet의 수를 3로 제한
   selector:
     matchLabels:
-      app: donggu-nginx
+      app: donggu-1-nginx
   template:
     metadata:
       labels:
-        app: donggu-nginx
+        app: donggu-1-nginx
     spec:
       containers:
-      - name: test-nginx
+      - name: donggu-1-nginx
         image: harbor.dorong9.com/donggu-private-project-1/front-react:54
         ports:
         - containerPort: 80
@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: donggu-nginx
+  name: donggu-1-nginx
   namespace: donggu-1
 spec:
   ports:
@@ -33,4 +33,4 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: donggu-nginx
+    app: donggu-1-nginx
