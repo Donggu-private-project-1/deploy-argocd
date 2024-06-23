@@ -18,3 +18,10 @@ spec:
               name: donggu-1-nginx
               port:
                 number: 80
+        - path: /api
+          pathType: Prefix
+          backend:
+            service:
+              name: donggu-1-tomcat
+              port:
+                number: 8080
