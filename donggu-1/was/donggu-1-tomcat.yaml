@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: donggu-1-tomcat
-        image: harbor.dorong9.com/donggu-private-project-1/back-springtomcat:22
+        image: harbor.dorong9.com/donggu-private-project-1/back-springtomcat:2
         ports:
         - containerPort: 8080
       imagePullSecrets:
