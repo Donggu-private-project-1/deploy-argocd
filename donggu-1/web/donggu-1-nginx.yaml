@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: donggu-1-nginx
-        image: 192.168.20.110:8081/donggu-private-project-1/front-react:33
+        image: http://192.168.20.110:8081/donggu-private-project-1/front-react:33
         ports:
         - containerPort: 80
       imagePullSecrets:
