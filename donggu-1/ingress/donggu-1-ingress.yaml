@@ -37,4 +37,4 @@ spec:
             service:
               name: donggu-1-tomcat
               port:
-                number: 80
+                number: 8080
