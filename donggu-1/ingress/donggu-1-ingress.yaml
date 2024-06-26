@@ -5,14 +5,15 @@ metadata:
   namespace: donggu-1
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
     - host: www.dorong9.com
       http:
         paths:
-        - path: /
-          pathType: Prefix
+        - path: /(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: donggu-1-nginx
