@@ -13,22 +13,22 @@ spec:
       http:
         paths:
         - path: /(.*)
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: donggu-1-nginx
-              port:
-                number: 80
-    - host: dorong9.com
-      http:
-        paths:
-        - path: /
           pathType: Prefix
           backend:
             service:
               name: donggu-1-nginx
               port:
-               number: 80
+                number: 80
+    #- host: dorong9.com
+    #  http:
+    #    paths:
+    #    - path: /
+    #      pathType: Prefix
+    #      backend:
+    #        service:
+    #          name: donggu-1-nginx
+    #          port:
+    #           number: 80
     - host: api.dorong9.com
       http:
         paths:
