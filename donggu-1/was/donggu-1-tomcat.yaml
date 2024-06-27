@@ -18,12 +18,7 @@ spec:
       - name: donggu-1-tomcat
         image: harbor.dorong9.com/donggu-private-project-1/back-springtomcat:24
         ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            cpu: 500m
-          limits: 
-            cpu: 1000m            
+        - containerPort: 8080      
       imagePullSecrets:
       - name: donggu-1-regcred
 ---
