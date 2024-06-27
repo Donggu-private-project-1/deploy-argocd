@@ -4,7 +4,7 @@ metadata:
   name: donggu-1-nginx
   namespace: donggu-1
 spec:
-  scaleTargetRef:
+  scaleTargetRef: 
     apiVersion: apps/v1
     kind: Deployment
     name: donggu-1-nginx
