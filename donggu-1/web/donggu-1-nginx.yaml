@@ -19,6 +19,11 @@ spec:
         image: harbor.dorong9.com/donggu-private-project-1/front-react:35
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: 500m
+          limits: 
+            cpu: 1000m             
       imagePullSecrets:
       - name: donggu-1-regcred
 ---
