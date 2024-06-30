@@ -52,7 +52,8 @@ spec:
       targetPort: 80
   selector:
     app: donggu-1-nginx
-    # 안정 버전 선택을 위한 레이블은 Argo Rollouts가 자동으로 관리합니다
+    rollouts-pod-template-hash: ""  # 이 라인을 추가합니다
+
 ---
 apiVersion: v1
 kind: Service
@@ -66,4 +67,4 @@ spec:
       targetPort: 80
   selector:
     app: donggu-1-nginx
-    # 카나리 버전 선택을 위한 레이블은 Argo Rollouts가 자동으로 관리합니다
+    rollouts-pod-template-hash: ""  # 이 라인을 추가합니다

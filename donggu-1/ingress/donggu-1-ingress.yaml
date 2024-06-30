@@ -5,6 +5,8 @@ metadata:
   namespace: donggu-1
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "0"    
 spec:
   ingressClassName: nginx
   rules:
