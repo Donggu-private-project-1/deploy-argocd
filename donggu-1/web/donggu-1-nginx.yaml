@@ -1,11 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: donggu-1-nginx
   namespace: donggu-1
 spec:
-  #replicas: 1
-  revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
+  replicas: 2  # HPA의 minReplicas와 일치시킵니다
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: donggu-1-nginx
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: donggu-1-nginx
-        image: harbor.dorong9.com/donggu-private-project-1/front-react:48
+        image: harbor.dorong9.com/donggu-private-project-1/front-react:{{TAG}}
         ports:
         - containerPort: 80
         resources:
@@ -25,14 +25,25 @@ spec:
             memory: "64Mi"
           limits:
             cpu: "100m"
-            memory: "128Mi"                
+            memory: "128Mi"
       imagePullSecrets:
       - name: donggu-1-regcred
+  strategy:
+    canary:
+      steps:
+      - setWeight: 25
+      - pause: {duration: 15m}
+      - setWeight: 50
+      - pause: {duration: 15m}
+      - setWeight: 75
+      - pause: {duration: 15m}
+      maxSurge: "25%"
+      maxUnavailable: 0
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: donggu-1-nginx
+  name: donggu-1-nginx-stable
   namespace: donggu-1
 spec:
   ports:
@@ -41,3 +52,18 @@ spec:
       targetPort: 80
   selector:
     app: donggu-1-nginx
+    # 안정 버전 선택을 위한 레이블은 Argo Rollouts가 자동으로 관리합니다
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: donggu-1-nginx-canary
+  namespace: donggu-1
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: donggu-1-nginx
+    # 카나리 버전 선택을 위한 레이블은 Argo Rollouts가 자동으로 관리합니다

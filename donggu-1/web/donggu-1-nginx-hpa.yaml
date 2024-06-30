@@ -1,15 +1,15 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: donggu-1-nginx-hpa
+  name: donggu-1-nginx
   namespace: donggu-1
 spec:
-  scaleTargetRef: 
-    apiVersion: apps/v1
-    kind: Deployment
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
     name: donggu-1-nginx
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: 2
+  maxReplicas: 10
   metrics:
   - type: Resource
     resource:
@@ -17,12 +17,3 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
-#  behavior:
-#    scaleDown:
-#      policies:
-#      - type: Pods
-#        value: 1
-#        periodSeconds: 60
-#      - type: Percent
-#        value: 10
-#        periodSeconds: 60

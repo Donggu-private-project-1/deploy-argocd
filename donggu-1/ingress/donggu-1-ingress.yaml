@@ -15,19 +15,23 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: donggu-1-nginx
+              name: donggu-1-nginx-stable
               port:
                 number: 80
-    - host: dorong9.com
+
+# 카나리 테스트용
+    - host: canary.www.dorong9.com
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: donggu-1-nginx
+              name: donggu-1-nginx-canary
               port:
                number: 80
+
+# api 서버
     - host: api.dorong9.com
       http:
         paths:
