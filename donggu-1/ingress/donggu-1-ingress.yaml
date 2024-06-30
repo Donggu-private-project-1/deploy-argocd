@@ -20,7 +20,7 @@ spec:
                 number: 80
 
 # 카나리 테스트용
-    - host: canary.www.dorong9.com
+    - host: canary.dorong9.com
       http:
         paths:
         - path: /
