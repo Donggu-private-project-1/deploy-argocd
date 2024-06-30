@@ -4,8 +4,8 @@ metadata:
   name: donggu-1-tomcat
   namespace: donggu-1
 spec:
-  #replicas: 1
-  revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 3로 제한
+  # replicas: 1
+  revisionHistoryLimit: 1  # 보관할 ReplicaSet의 수를 1로 제한
   selector:
     matchLabels:
       app: donggu-1-tomcat
@@ -18,10 +18,10 @@ spec:
       - name: donggu-1-tomcat
         image: harbor.dorong9.com/donggu-private-project-1/back-springtomcat:24
         ports:
-        - containerPort: 8080 
+        - containerPort: 8080
         resources:
           requests:
-          cpu: 250m
+            cpu: 250m
             memory: 256Mi
           limits:
             cpu: 500m
