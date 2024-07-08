@@ -35,18 +35,7 @@ spec:
     - host: api.dorong9.com
       http:
         paths:
-        - path: /user-api
-          pathType: Prefix
-          backend:
-            service:
-              name: donggu-1-tomcat
-              port:
-                number: 8080
-
-    - host: api.dorong9.com
-      http:
-        paths:
-        - path: /trip-api
+        - path: /
           pathType: Prefix
           backend:
             service:
