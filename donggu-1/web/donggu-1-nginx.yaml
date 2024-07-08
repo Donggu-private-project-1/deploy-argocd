@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: donggu-1-nginx
-        image: harbor.dorong9.com/donggu-private-project-1/nextjs-react:47
+        image: harbor.dorong9.com/donggu-private-project-1/nextjs-react:37
         ports:
         - containerPort: 80
         resources:
@@ -63,6 +63,6 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 3000
   selector:
     app: donggu-1-nginx
