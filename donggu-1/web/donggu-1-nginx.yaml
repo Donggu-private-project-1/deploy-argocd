@@ -54,7 +54,6 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
-    version: stable    
 
 ---
 apiVersion: v1
@@ -69,4 +68,3 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
-    version: canary    
