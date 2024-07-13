@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: donggu-1-nginx
-        rollouts-pod-template-hash: ${PODTEMPLATEHASH}
+        rollouts-pod-template-hash: "" # 자동으로 채워질 필드입니다.
     spec:
       containers:
       - name: donggu-1-nginx
@@ -55,8 +55,7 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
-    rollouts-pod-template-hash: ${STABLEHASH}
-    
+    version: stable    
 
 ---
 apiVersion: v1
@@ -71,4 +70,4 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
-    rollouts-pod-template-hash: ${CANARYHASH}
+    version: canary    
