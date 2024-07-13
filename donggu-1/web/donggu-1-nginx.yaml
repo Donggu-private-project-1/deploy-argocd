@@ -4,8 +4,8 @@ metadata:
   name: donggu-1-nginx
   namespace: donggu-1
 spec:
-  replicas: 2  # HPA의 minReplicas와 일치시킵니다
-  revisionHistoryLimit: 2
+  replicas: 1  # HPA의 minReplicas와 일치시킵니다
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: donggu-1-nginx
@@ -13,7 +13,6 @@ spec:
     metadata:
       labels:
         app: donggu-1-nginx
-        rollouts-pod-template-hash: "" # 자동으로 채워질 필드입니다.
     spec:
       containers:
       - name: donggu-1-nginx
