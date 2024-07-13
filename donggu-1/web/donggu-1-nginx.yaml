@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: donggu-1-nginx
+        rollouts-pod-template-hash: ${PODTEMPLATEHASH}
     spec:
       containers:
       - name: donggu-1-nginx
@@ -30,6 +31,8 @@ spec:
       - name: donggu-1-regcred
   strategy:
     canary:
+      canaryService: donggu-1-nginx-canary
+      stableService: donggu-1-nginx-stable    
       steps:
       - setWeight: 25
       - pause: {duration: 1m}
@@ -52,6 +55,8 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
+    rollouts-pod-template-hash: ${STABLEHASH}
+    
 
 ---
 apiVersion: v1
@@ -66,3 +71,4 @@ spec:
       targetPort: 3000
   selector:
     app: donggu-1-nginx
+    rollouts-pod-template-hash: ${CANARYHASH}
